@@ -42,6 +42,8 @@ Observed: **26 tests passed**. No credentials or installation are needed for thi
 
 ## Documentation
 
+- [Public design system](DESIGN.md): Rahil Design 3.3.0, shared tokens and visual review rules.
+
 - [Scope and acceptance](docs/spec.md): local v1 contract.
 - [Methodology](docs/methodology.md): fitting, lookahead limitations and stress assumptions.
 - [Sources](docs/sources.md): source coverage and verification.

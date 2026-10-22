@@ -1,15 +1,18 @@
-# Local validation evidence
+# Offline validation evidence
 
-Validated the continuation on Python 3.14.7, financial cutoff 2026-10-21. No external account writes.
+Financial cutoff: 2026-10-21; market bars through 2026-10-20. Local validation uses Python 3.14.7 and only the standard library. No NumPy or sibling environment is needed.
 
 ```bash
+python3 scripts/snapshot.py
 python3 scripts/validate.py
+python3 scripts/result_figure.py --check
+python3 -m compileall -q strc scripts tests
 ```
 
-This runs the source verifier, unittest suite and each README demo twice. Observed: 18 tests passed; 385 source bodies matched the committed SHA-256 inventory; 6 generated files had identical hashes on consecutive runs. Exact output hashes and invoked demo commands are in [validation.json](validation.json). Floating-point model outputs are tied to the documented Python/NumPy environment, not a cross-platform byte-identity guarantee.
+Observed: 26 tests passed; 385 source bodies matched the committed inventory; 6 CSV/JSON output hashes matched across two identical demos. Exact hashes and interpreter are in [validation.json](validation.json). Floating-point output identity is measured within an environment, not guaranteed across Python/platform versions.
 
-Cold-restore check: copied only the files eligible for the local commit into a new directory under `~/scratch/strc-rate-controller/cold-check`, with no raw cache, generated results or installed repo environment. Restored `snapshot/` offline, ran all tests/demos and compared generated hashes with the working repo. The hashes matched. The earnings check used the documented pinned dependency environment under `~/scratch/strategy-fair-value-earnings/venv`. Scratch copies were removed after validation.
+The CI workflow pins checkout/setup-python by full commit SHA and Python 3.12.12/3.14.7 on Ubuntu 24.04, with read-only repository permissions. After runtime setup, checks are offline: snapshot restoration, source verification, real behavior tests, repeated demo hashes, result-figure freshness and byte compilation. Python is dynamically typed; compilation is not claimed as static typechecking.
 
-Real-source behavior, negative inputs and domain invariants are exercised in `tests/`. A passing suite does not resolve the financial/model limitations in the README. Relative documentation links, whitespace and staged-file sizes were checked before committing. The local pre-commit hook checks index sizes and rejects any staged file above 20,000 bytes (5,000 estimated tokens); it was enabled and not bypassed.
+Clean-copy and fresh-clone commands/results are recorded in [publication.md](publication.md). Tests cover fetch cache replay, bounded retry on HTTP 429, nonretryable HTTP 403, invalid input, conditional declarations, holdout targets, proxy restrictions and stress behavior. They do not certify issuer data or actual contractual compliance. The pre-commit hook remains enabled and rejects any staged file above 20,000 bytes (5,000 estimated tokens).
 
-No charts or existing partial figures are part of the validated deliverable. No license was selected. Generated outputs remain available locally and are recreated by the README commands.
+`assets/holdout.svg` is generated from actual `results/fit.json` with `scripts/result_figure.py`. It was rendered in the T3 browser at desktop and phone widths. Typography uses IBM Plex Sans when available and a sans-serif fallback; no font binaries are bundled. The table uses the Rahil light figure palette, plain numeric cells and visible sample/leakage caveats. No investment edge is claimed.

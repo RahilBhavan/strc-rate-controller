@@ -13,3 +13,9 @@ Primary documents checked on their owners' sites during this continuation:
 - [NY Fed SOFR](https://www.newyorkfed.org/markets/reference-rates/sofr): overnight reference rate; not the contract's term SOFR.
 
 Yahoo chart responses supply daily STRC, MSTR and BTC bars. Yahoo is a secondary market-data provider. They are frozen and attributed; no exchange-grade/intraday reconciliation was performed. Refresh helpers in `scripts/fetch_*.py` are optional and require a locally configured `SEC_USER_AGENT` with contact email for EDGAR. Refresh changes the research sample; it is not part of deterministic reproduction.
+
+Publication source review re-opened the amended certificate, July 30 policy release and October proxy at their primary URLs. The amended certificate's definition of Regular Dividend Rate Per Annum restricts any elected **different** rate, including an increase, while allowing the prior rate to carry. The implemented floor remains an overnight-SOFR approximation. Its arrears flag abstracts both payment and the certificate's declared-and-sufficient-consideration-set-aside alternative; it does not inspect dividend funding.
+
+## Source rights
+
+The cache preserves public response bodies for attributed, reproducible research; it is not a licensed market-data feed. SEC-hosted issuer filings and company/Yahoo responses remain third-party material. Some filing HTML includes a Donnelley copyright notice. Attribution and public availability do not establish a blanket redistribution license, and none is asserted here. Hash inventories prove byte identity, not permission, truth or completeness. Downstream commercial reuse needs its own rights review. No account, private financial record, authenticated response or private hub export was found in the publication inventory.

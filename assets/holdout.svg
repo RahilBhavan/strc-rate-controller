@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="650" viewBox="0 0 720 650" role="img" aria-labelledby="title desc">
+<title id="title">Only three holdout decisions: no predictive edge established</title>
+<desc id="desc">Holdout mean absolute errors in basis points for eight retrospective policies. Hold has zero error; stated-tier proxy has 33.33. mNAV uses hindsight scaling.</desc>
+<rect width="720" height="650" fill="#F5F5EF"/>
+<g fill="#111214" font-family="IBM Plex Sans, sans-serif" font-size="23">
+<text x="24" y="42" font-size="30" font-weight="600">Only 3 holdout decisions</text>
+<text x="24" y="78">No predictive edge established</text>
+<text x="24" y="118" fill="#52545A" font-size="20">Retrospective policy comparison · cutoff 2026-10-21</text>
+<text x="24" y="162" fill="#52545A">Policy</text>
+<text x="590" y="162" text-anchor="end" fill="#52545A">Holdout MAE (bp)</text>
+<path d="M24 176H660" stroke="#C6C7BF"/>
+<text x="24" y="204">hold</text>
+<text x="590" y="204" text-anchor="end">0.00</text>
+<text x="24" y="240">Stated-tier proxy</text>
+<text x="590" y="240" text-anchor="end">33.33</text>
+<text x="24" y="276">proportional</text>
+<text x="590" y="276" text-anchor="end">33.33</text>
+<text x="24" y="312">proportional+bias</text>
+<text x="590" y="312" text-anchor="end">41.67</text>
+<text x="24" y="348">PI</text>
+<text x="590" y="348" text-anchor="end">50.00</text>
+<text x="24" y="384">proportional+BTC</text>
+<text x="590" y="384" text-anchor="end">33.33</text>
+<text x="24" y="420">Proportional + mNAV*</text>
+<text x="590" y="420" text-anchor="end">33.33</text>
+<text x="24" y="456">threshold</text>
+<text x="590" y="456" text-anchor="end">41.67</text>
+<text x="24" y="516" font-size="20">*mNAV is hindsight-scaled; daily notice closes may leak.</text>
+<text x="24" y="548" font-size="20">Models and split were chosen after observing history.</text>
+<text x="24" y="590" font-size="20" fill="#52545A">Source: results/fit.json · filings + market-price proxies</text>
+<text x="24" y="624" font-size="20" fill="#52545A">Rahil Bhavan · Independent research</text>
+</g></svg>

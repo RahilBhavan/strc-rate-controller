@@ -1,0 +1,18 @@
+{
+  "scope": "all reachable Git blobs including app checkpoint refs; restored archive bodies and metadata; working source diff reviewed separately",
+  "reachable_blob_count": 318,
+  "oversized_blobs": [],
+  "credential_pattern_hit_paths": [],
+  "unexpected_metadata_paths": [],
+  "source_hosts": [
+    "api.strategy.com",
+    "data.sec.gov",
+    "markets.newyorkfed.org",
+    "query1.finance.yahoo.com",
+    "www.sec.gov"
+  ],
+  "snapshot_members": 770,
+  "unexpected_archive_members": [],
+  "snapshot_sha256": "5f0963ce49acf0a195c3fa71527ae14454594b40ac1291235787d24a3094bdc7",
+  "limitations": "Pattern scan plus manual provenance/path review, not security certification. Public issuer contact/signatory information belongs to attributed third-party filings. Redistribution rights are not certified."
+}

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="820" viewBox="0 0 960 820" role="img" aria-labelledby="title desc">
+<title id="title">Strategy raised STRC&#x27;s rate in 8 of 14 decisions, 9.00% to 12.00%</title>
+<desc id="desc">Two panels on one time axis, Jul 29, 2025 to Nov 15, 2026. Top: STRC daily close against the company&#x27;s $99 to $100 objective, falling to $74.57 on Jun 26, 2026 and ending at $98.71. Bottom: the filed dividend rate, raised 8 times from 9.00% to 12.00% and held 6 times (Apr 2026, May 2026, Jun 2026, Aug 2026, Sep 2026, Oct 2026).</desc>
+<g font-family="IBM Plex Sans, sans-serif">
+<rect width="960" height="820" fill="#F5F5EF"/>
+<text x="24.0" y="44.0" font-size="28" fill="#111214" font-weight="600">Strategy raised STRC&#x27;s rate in 8 of 14 decisions, 9.00% to 12.00%</text>
+<text x="24.0" y="78.0" font-size="19" fill="#52545A">The rate resets each month. Strategy&#x27;s stated tiers raise it when the price is below $99</text>
+<text x="24.0" y="102.0" font-size="19" fill="#52545A">and expect no change from $99 to $100.99. Rate steps sit on the dates each rate starts.</text>
+<text x="24.0" y="138.0" font-size="18" fill="#52545A">STRC daily close, $ per share (axis starts at $70)</text>
+<rect x="76" y="164.4" width="770" height="7.2" fill="#C6C7BF"/>
+<text x="85.7" y="154.4" font-size="18" fill="#52545A">Company objective, $99 to $100</text>
+<text x="66.0" y="386.0" font-size="18" fill="#52545A" text-anchor="end">$70</text>
+<text x="66.0" y="314.1" font-size="18" fill="#52545A" text-anchor="end">$80</text>
+<text x="66.0" y="242.2" font-size="18" fill="#52545A" text-anchor="end">$90</text>
+<text x="66.0" y="170.4" font-size="18" fill="#52545A" text-anchor="end">$100</text>
+<path d="M76 150V380" stroke="#C6C7BF"/>
+<polyline points="77.6,203.9 79.2,204.0 80.9,206.5 85.7,190.3 87.3,189.5 89.0,185.9 90.6,181.7 92.2,182.3 97.1,178.4 98.7,180.3 100.3,179.5 101.9,178.7 103.6,186.3 108.4,191.3 110.0,210.4 111.7,207.6 113.3,204.3 114.9,200.0 119.8,199.6 121.4,195.6 123.0,189.4 124.6,183.0 126.3,180.5 132.7,182.5 134.4,181.1 136.0,182.6 137.6,181.6 142.5,181.9 144.1,183.6 145.7,183.1 147.3,183.3 148.9,184.1 153.8,186.7 155.4,186.3 157.1,184.1 158.7,182.3 160.3,180.9 165.2,182.0 166.8,183.1 168.4,182.3 170.0,186.5 171.6,185.9 176.5,185.6 178.1,185.5 179.7,178.9 181.4,171.8 183.0,171.6 187.9,170.5 189.5,173.7 191.1,172.3 192.7,173.4 194.3,174.2 199.2,171.3 200.8,173.0 202.4,176.0 204.1,183.8 205.7,183.1 210.5,174.3 212.2,174.3 213.8,177.9 215.4,173.9 217.0,173.6 221.9,175.2 223.5,174.4 225.1,173.6 226.8,172.4 228.4,168.8 233.2,167.2 234.9,166.2 236.5,164.3 238.1,165.2 239.7,170.3 244.6,164.7 246.2,164.4 247.8,164.3 249.5,174.3 251.1,180.5 255.9,203.3 257.6,190.3 259.2,203.3 260.8,216.2 262.4,197.6 267.3,190.4 268.9,191.0 270.5,184.7 273.8,188.4 278.6,190.2 280.3,180.2 281.9,177.3 283.5,177.3 285.1,177.4 290.0,174.9 291.6,170.9 293.2,171.7 294.8,171.1 296.5,171.1 301.3,180.9 302.9,179.9 304.6,183.6 306.2,179.5 307.8,173.4 312.7,172.0 314.3,171.6 315.9,171.9 319.2,170.5 324.0,173.1 325.6,171.7 327.3,173.0 330.5,166.7 335.4,164.9 337.0,164.6 338.6,164.4 340.2,164.2 341.9,164.2 346.7,163.9 348.3,164.2 350.0,164.0 351.6,164.4 353.2,164.3 359.7,170.7 361.3,167.6 362.9,166.5 364.5,168.0 369.4,171.2 371.0,170.4 372.7,171.6 374.3,177.4 375.9,171.6 380.8,171.2 382.4,175.5 384.0,178.8 385.6,209.9 387.2,173.3 392.1,166.4 393.7,166.7 395.3,164.4 397.0,164.2 398.6,165.8 405.1,169.2 406.7,168.0 408.3,166.8 409.9,165.7 414.8,165.5 416.4,165.0 418.0,164.7 419.7,164.4 421.3,164.4 426.1,164.4 427.8,164.3 429.4,164.0 431.0,164.3 432.6,164.2 437.5,163.9 439.1,164.2 440.7,164.2 442.4,164.3 444.0,166.2 448.8,165.6 450.5,165.3 452.1,167.5 453.7,168.1 455.3,167.6 460.2,165.4 461.8,164.7 463.4,164.8 465.1,164.6 466.7,165.0 471.5,164.6 473.2,164.2 474.8,164.4 476.4,164.4 482.9,164.4 484.5,164.4 486.1,164.4 487.7,164.4 489.4,164.4 494.2,164.4 495.9,164.4 497.5,169.3 499.1,171.1 500.7,170.1 505.6,169.3 507.2,169.5 508.8,168.4 510.4,167.3 512.1,167.8 516.9,168.3 518.5,168.3 520.2,168.2 521.8,166.2 523.4,165.4 528.3,164.7 529.9,164.7 531.5,164.6 533.1,164.7 534.8,164.4 539.6,164.4 541.2,164.4 542.9,164.4 544.5,164.4 546.1,170.2 551.0,174.4 552.6,171.6 554.2,170.4 555.8,169.3 557.5,169.4 563.9,168.2 565.6,170.3 567.2,174.7 568.8,171.6 573.7,178.2 575.3,188.0 576.9,202.8 578.5,197.3 580.1,211.8 585.0,187.0 586.6,191.8 588.3,194.5 589.9,189.6 591.5,201.7 596.4,198.9 598.0,223.4 599.6,243.4 601.2,246.4 607.7,244.9 609.3,255.6 610.9,302.1 612.6,339.1 614.2,347.2 619.1,281.7 620.7,273.2 622.3,254.5 623.9,251.6 630.4,246.5 632.0,261.0 633.6,263.8 635.3,267.1 636.9,254.4 641.7,257.7 643.4,249.1 645.0,252.2 646.6,269.2 648.2,270.1 653.1,257.1 654.7,249.5 656.3,254.6 658.0,272.6 659.6,258.6 664.4,248.3 666.1,249.0 667.7,254.1 669.3,239.8 670.9,240.1 675.8,219.6 677.4,218.1 679.0,206.8 680.7,207.1 682.3,200.2 687.1,205.0 688.8,198.0 690.4,198.0 692.0,194.8 693.6,201.9 698.5,204.9 700.1,207.4 701.7,198.1 703.3,198.5 705.0,191.8 709.8,184.4 711.5,184.9 713.1,184.8 714.7,178.8 716.3,183.6 721.2,185.2 722.8,187.4 724.4,185.4 726.0,180.0 727.7,180.5 734.1,178.5 735.8,179.8 737.4,179.0 739.0,174.2 743.9,172.2 745.5,184.9 747.1,185.4 748.7,177.8 750.4,175.1 755.2,173.1 756.8,171.1 758.5,172.2 760.1,176.5 761.7,174.9 766.6,170.8 768.2,167.5 769.8,169.0 771.4,168.0 773.1,168.6 777.9,168.1 779.5,168.2 781.2,168.5 782.8,168.3 784.4,166.9 789.3,165.2 790.9,165.1 792.5,166.2 794.1,167.8 795.7,180.8 800.6,174.3 802.2,173.6" fill="none" stroke="#111214" stroke-width="2" stroke-linejoin="round"/>
+<text x="624.2" y="353.2" font-size="18" fill="#111214">$74.57 on Jun 26, 2026</text>
+<text x="854.0" y="195.6" font-size="18" fill="#111214">$98.71</text>
+<text x="854.0" y="213.6" font-size="18" fill="#52545A">Oct 20</text>
+<text x="24.0" y="418.0" font-size="18" fill="#52545A">Dividend rate, % per year (axis starts at 8.5%)</text>
+<circle cx="532" cy="412" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="544.0" y="418.0" font-size="18" fill="#52545A">raised, change in bp</text>
+<circle cx="752" cy="412" r="5.5" fill="#F5F5EF" stroke="#111214" stroke-width="1.5"/>
+<text x="764.0" y="418.0" font-size="18" fill="#52545A">held</text>
+<text x="66.0" y="611.5" font-size="18" fill="#52545A" text-anchor="end">9%</text>
+<text x="66.0" y="566.5" font-size="18" fill="#52545A" text-anchor="end">10%</text>
+<text x="66.0" y="521.5" font-size="18" fill="#52545A" text-anchor="end">11%</text>
+<text x="66.0" y="476.5" font-size="18" fill="#52545A" text-anchor="end">12%</text>
+<path d="M76 448V628" stroke="#C6C7BF"/>
+<path d="M76.0 605.5V605.5H131.1V560.5H179.7V549.2H230.0V538.0H278.6V526.8H328.9V515.5H379.1V504.2H424.5V493.0H474.8V493.0H523.4V493.0H573.7V493.0H622.3V493.0H646.6V470.5H696.9V470.5H747.1V470.5H795.7V470.5H846.0" fill="none" stroke="#111214" stroke-width="2"/>
+<text x="80.0" y="629.5" font-size="18" fill="#111214">9.00% at issue</text>
+<circle cx="131.1" cy="560.5" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="131.1" y="548.5" font-size="18" fill="#111214" text-anchor="middle">+100 bp</text>
+<circle cx="179.7" cy="549.2" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="179.7" y="537.2" font-size="18" fill="#111214" text-anchor="middle">+25</text>
+<circle cx="230.0" cy="538.0" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="230.0" y="526.0" font-size="18" fill="#111214" text-anchor="middle">+25</text>
+<circle cx="278.6" cy="526.8" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="278.6" y="514.8" font-size="18" fill="#111214" text-anchor="middle">+25</text>
+<circle cx="328.9" cy="515.5" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="328.9" y="503.5" font-size="18" fill="#111214" text-anchor="middle">+25</text>
+<circle cx="379.1" cy="504.2" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="379.1" y="492.2" font-size="18" fill="#111214" text-anchor="middle">+25</text>
+<circle cx="424.5" cy="493.0" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="424.5" y="481.0" font-size="18" fill="#111214" text-anchor="middle">+25</text>
+<circle cx="474.8" cy="493.0" r="5.5" fill="#F5F5EF" stroke="#111214" stroke-width="1.5"/>
+<circle cx="523.4" cy="493.0" r="5.5" fill="#F5F5EF" stroke="#111214" stroke-width="1.5"/>
+<circle cx="573.7" cy="493.0" r="5.5" fill="#F5F5EF" stroke="#111214" stroke-width="1.5"/>
+<circle cx="646.6" cy="470.5" r="6" fill="#FFE500" stroke="#111214" stroke-width="1.5"/>
+<text x="646.6" y="458.5" font-size="18" fill="#111214" text-anchor="middle">+50</text>
+<circle cx="696.9" cy="470.5" r="5.5" fill="#F5F5EF" stroke="#111214" stroke-width="1.5"/>
+<circle cx="747.1" cy="470.5" r="5.5" fill="#F5F5EF" stroke="#111214" stroke-width="1.5"/>
+<circle cx="795.7" cy="470.5" r="5.5" fill="#F5F5EF" stroke="#111214" stroke-width="1.5"/>
+<text x="854.0" y="476.5" font-size="18" fill="#111214">12.00%</text>
+<text x="468.8" y="519.0" font-size="18" fill="#111214">3 holds with the price in the band</text>
+<text x="682.9" y="547.0" font-size="18" fill="#111214">3 holds with the price</text>
+<text x="682.9" y="567.0" font-size="18" fill="#111214">below $99, where the tiers</text>
+<text x="682.9" y="587.0" font-size="18" fill="#111214">called for +25 to +50 bp</text>
+<path d="M76 636H846" stroke="#C6C7BF"/>
+<path d="M80.9 636v6" stroke="#52545A"/>
+<text x="80.9" y="660.0" font-size="18" fill="#52545A" text-anchor="middle">Aug 2025</text>
+<path d="M230.0 636v6" stroke="#52545A"/>
+<text x="230.0" y="660.0" font-size="18" fill="#52545A" text-anchor="middle">Nov</text>
+<path d="M379.1 636v6" stroke="#52545A"/>
+<text x="379.1" y="660.0" font-size="18" fill="#52545A" text-anchor="middle">Feb 2026</text>
+<path d="M523.4 636v6" stroke="#52545A"/>
+<text x="523.4" y="660.0" font-size="18" fill="#52545A" text-anchor="middle">May</text>
+<path d="M672.5 636v6" stroke="#52545A"/>
+<text x="672.5" y="660.0" font-size="18" fill="#52545A" text-anchor="middle">Aug</text>
+<path d="M821.7 636v6" stroke="#52545A"/>
+<text x="821.7" y="660.0" font-size="18" fill="#52545A" text-anchor="middle">Nov</text>
+<text x="24.0" y="704.0" font-size="18" fill="#52545A">Rates: 16 SEC filings, Jul 29, 2025 to Sep 30, 2026, each linked in the README table.</text>
+<text x="24.0" y="728.0" font-size="18" fill="#52545A">Objective: 8-K exhibit 99.1, Jul 30, 2026 (0001050446-26-000036).</text>
+<text x="24.0" y="752.0" font-size="18" fill="#52545A">Price: Yahoo daily close (secondary data) to Oct 20, 2026.</text>
+<text x="24.0" y="776.0" font-size="18" fill="#52545A">Not shown: the Nov 2026 rate, pending the Oct 28, 2026 vote.</text>
+<text x="24.0" y="800.0" font-size="18" fill="#52545A">scripts/reset_figure.py · Rahil Bhavan · Independent research</text>
+</g></svg>

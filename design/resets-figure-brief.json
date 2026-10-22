@@ -1,0 +1,88 @@
+{
+  "id": "strc-resets",
+  "set": "strc-rate-controller-readme",
+  "template": "rahil-design-light-figure",
+  "reader": "Recruiter or engineer skimming the README on desktop, with no prior knowledge of STRC",
+  "decision": "Understand how a monthly STRC reset relates to price before reading the replay and stress tools",
+  "point": "Strategy raised STRC's rate in 8 of 14 decisions, from 9.00% to 12.00%; 3 later holds came with the price below $99",
+  "comparison": "Filed dividend rate against STRC's daily close and the company's $99 to $100 objective, on one time axis",
+  "title": "Strategy raised STRC's rate in 8 of 14 decisions, 9.00% to 12.00%",
+  "subtitle": "The rate resets each month. Strategy's stated tiers raise it when the price is below $99 and expect no change from $99 to $100.99. Rate steps sit on the dates each rate starts.",
+  "caption": "Rates: 16 SEC filings, Jul 29, 2025 to Sep 30, 2026, each linked in the README table.",
+  "form": "small-multiples",
+  "values_count": 325,
+  "shape_reason": "309 daily closes and 16 rate periods; the point is the timing of rate steps against the price path",
+  "encodings": [
+    {
+      "mark": "line",
+      "baseline": 70,
+      "axis_min": 70,
+      "axis_min_labeled": true,
+      "scale": "linear",
+      "scale_labeled": true,
+      "series": 1
+    },
+    {
+      "mark": "step",
+      "baseline": 8.5,
+      "axis_min": 8.5,
+      "axis_min_labeled": true,
+      "scale": "linear",
+      "scale_labeled": true,
+      "series": 1
+    }
+  ],
+  "accents": 1,
+  "accent_meaning": "title-value",
+  "estimates": {
+    "present": false,
+    "labeled": true,
+    "treatment": "none"
+  },
+  "illustration": false,
+  "illustration_labeled": false,
+  "compare_with": [],
+  "scale_id": "strc-resets",
+  "sources": [
+    {
+      "title": "Strategy 8-K rate announcements (16 filings, linked in README)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1050446&type=8-K",
+      "as_of": "2026-10-21"
+    },
+    {
+      "title": "Strategy 8-K exhibit 99.1, $99 to $100 objective",
+      "url": "https://www.sec.gov/Archives/edgar/data/1050446/000105044626000036/mstr-20260730x8kxex991.htm",
+      "as_of": "2026-07-30"
+    },
+    {
+      "title": "Yahoo daily STRC bars (secondary)",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/STRC",
+      "as_of": "2026-10-20"
+    }
+  ],
+  "alt": "Strategy raised STRC's rate in 8 of 14 decisions, from 9.00% to 12.00%. Three holds came with the price in the $99 to $100 band; three came after the June 2026 drop to $74.57, while the price was still below $99.",
+  "sizes_checked": [
+    "960x820",
+    "400x342"
+  ],
+  "feed_width_viewed": true,
+  "min_label_px": 18,
+  "point_px": 28,
+  "contrast_min": 6.9,
+  "measured_by": "manual",
+  "five_second_test": {
+    "by": "agent",
+    "date": "2026-10-22",
+    "said": "The rate went up 8 times to 12%, then held while the price recovered",
+    "result": "pass"
+  },
+  "attached_in": {
+    "post": "README.md",
+    "image": "assets/resets.svg"
+  },
+  "verdict_allow": [],
+  "warn_reasons": {
+    "five-second test was an agent self-test; a real reader is better": "No outside reader was available in this session; Rahil should run one before posting.",
+    "the point renders at 28px; it may not read in the feed unopened": "This is a README hero, not a feed card. The only export is the 960px README image. Viewed at 400px (GitHub mobile) the title and shape read but labels render near 7.5px; accepted narrow-width limit, readers can open the SVG."
+  }
+}

@@ -2,7 +2,11 @@
 
 Target: https://github.com/RahilBhavan/strc-rate-controller. Financial snapshot: 2026-10-21; market bars through 2026-10-20. Source review started from `5d32e24` and preserves its ancestry. Public creation/push is explicitly authorized for this project only.
 
-Status: local review and clean-copy verification complete; remote publication and CI verification pending.
+Status: published publicly; default branch `main`. Verified source commit: `2a4f8fed6edcca13d66a26ba1db8305d06093a5e`, descended from `5d32e24`. Remote `refs/heads/main` matched the intended local commit. The subsequent receipt/badge commit changes documentation only; its hash is available with `git log -1 -- docs/publication.md`.
+
+[GitHub Actions run 39718405905](https://github.com/RahilBhavan/strc-rate-controller/actions/runs/39718405905) passed on Python 3.12.12 and 3.14.7, including source verification, all 26 tests, repeated demos, figure freshness and compilation. No PR was created, no force push was used, and no deployment was made. Repository About text and five topics describe the research CLI.
+
+Fresh-clone verification used `git clone https://github.com/RahilBhavan/strc-rate-controller.git ~/scratch/strc-rate-controller/fresh-clone`, then the commands below. Python 3.14.7 reproduced all six working-tree hashes, verified 385 sources and passed 26 tests. Scratch checkouts were removed after the evidence was saved. The repository itself needs no dependencies or credentials for this demo.
 
 A cold copy under `~/scratch/strc-rate-controller/clean-copy` restored the archive, passed all 26 tests, ran the demo twice and matched all six working-tree output hashes. Intentional corruption of a source body and of an archive part was rejected with integrity errors. No pre-existing raw cache, generated outputs or installed dependency environment was copied.
 

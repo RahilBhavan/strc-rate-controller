@@ -1,5 +1,7 @@
 # STRC rate controller: replay discretionary resets and stress assumed responses
 
+[![Offline research checks](https://github.com/RahilBhavan/strc-rate-controller/actions/workflows/ci.yml/badge.svg)](https://github.com/RahilBhavan/strc-rate-controller/actions/workflows/ci.yml)
+
 ![Only three holdout decisions: hold MAE 0 bp, stated-tier proxy 33.33 bp; no predictive edge established](assets/holdout.svg)
 
 A Python research tool that extracts STRC reset history from filings, compares descriptive policies, and simulates assumed BTC/spread shocks. It separates filed reduction constraints from management's discretionary decisions. Financial cutoff: October 21, 2026; market bars end October 20.

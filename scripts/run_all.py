@@ -13,7 +13,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from strc import credit, fit, rules, sim  # noqa: E402
+from strc import credit, evaluation, fit, rules, sim  # noqa: E402
 from strc.data import sofr, strategy_snapshot  # noqa: E402
 from strc.features import AS_OF, decisions, mnav_proxy_series  # noqa: E402
 from strc.history import load  # noqa: E402
@@ -65,6 +65,7 @@ def main():
         "mnav_proxy": round(mnav.get(o.date, math.nan), 4)} for o in obs])
 
     # ---- fit ----------------------------------------------------------------------------------
+    dump("evaluation.json", evaluation.chronological_report(rows))
     ev = fit.evaluate(rows)
     pre = [r for r in rows if r.notice < fit.BREAK]
     post = [r for r in rows if r.notice >= fit.BREAK]

@@ -9,6 +9,7 @@ A Python research tool that extracts STRC reset history from filings, compares d
 ## Results
 
 - Fourteen unconditional rate decisions, eleven training and three holdout observations, plus eight-step expanding replay and replay-start sensitivity (`results/fit.json`). The hold baseline has 0 basis-point holdout MAE; the stated-tier proxy has 33.33 basis points. A three-observation holdout proves little.
+- `results/evaluation.json` adds ten-policy dated ledgers, prior-change/median baselines, paired losses against hold, raw/rounded error and omit-one-date sensitivity. See the [reproducible example](docs/evaluation.md).
 - The source history includes 17 announcements; the contingent November daily declaration remains labeled and excluded from fitting (`data/derived/announcements.csv`).
 - BTC -40% scenarios include two spread forms, three assumed slope multipliers and several discretionary response policies (`results/scenarios.json`). They are stress assumptions, not observed outcomes or default probabilities.
 
@@ -25,10 +26,11 @@ python3 scripts/snapshot.py
 python3 scripts/verify_sources.py
 python3 -m unittest discover -s tests -v
 python3 scripts/run_all.py
+python3 scripts/evaluate_policies.py --policy framework
 python3 scripts/result_figure.py --check
 ```
 
-Observed: **26 tests passed**. No credentials or installation are needed for this offline demo. Generated CSV/JSON are local ignored files. Run `python3 scripts/validate.py` to verify sources, run tests and compare two demo runs. Repeating the demo reproduces six output hashes. Optional fetch helpers require `SEC_USER_AGENT` with a contact email for EDGAR and may change the sample.
+Observed: **34 tests passed**. No credentials or installation are needed for this offline demo. Generated CSV/JSON are local ignored files. Run `python3 scripts/validate.py` to verify sources, run tests and compare two demo runs. Repeating the demo reproduces seven output hashes. Optional fetch helpers require `SEC_USER_AGENT` with a contact email for EDGAR and may change the sample.
 
 ## Repository layout
 
@@ -45,6 +47,7 @@ Observed: **26 tests passed**. No credentials or installation are needed for thi
 - [Public design system](DESIGN.md): Rahil Design 3.3.0, shared tokens and visual review rules.
 
 - [Scope and acceptance](docs/spec.md): local v1 contract.
+- [Chronological evaluation](docs/evaluation.md): dated ledgers, simple baselines, losing cases and a five-minute example.
 - [Methodology](docs/methodology.md): fitting, lookahead limitations and stress assumptions.
 - [Sources](docs/sources.md): source coverage and verification.
 - [Validation](docs/validation.md): exact checks and reproducibility evidence.

@@ -3,10 +3,10 @@
 Contract (binding) versus framework (stated intention) are kept separate:
 
 * `contract_floor` / `clamp` encode the "Monthly Regular Dividend Rate Per Annum" (original) and
-  "Regular Dividend Rate Per Annum" (amended and restated) definitions. A new rate cannot be
+  "Regular Dividend Rate Per Annum" (amended and restated) definitions. An elected different rate cannot be
   (i) negative, (ii) below the prior rate minus 25 bp minus any decline in Monthly SOFR over a
   look-back window, or (iii) below Monthly SOFR on the business day before the notice. A
-  reduction is allowed only if all accumulated dividends are paid. Increases are uncapped.
+  reduction is allowed only if all accumulated dividends are paid. Increases have no ceiling, but an elected increase still meets the SOFR floor.
 * `framework_change_bp` encodes the "Dividend Adjustment Framework" price tiers, which the
   company calls its current intention, subject to change in its sole discretion.
 
@@ -108,10 +108,10 @@ class Clamped:
 
 def clamp(proposed: float, prev_rate: float, sofr_decline_pct: float, sofr_before_notice: float,
           arrears_paid: bool = True) -> Clamped:
-    """Apply the contract to a proposed rate. Increases always pass."""
-    if proposed >= prev_rate:
+    """Apply restrictions to an elected different rate; unchanged carry is allowed."""
+    if proposed == prev_rate:
         return Clamped(proposed, contract_floor(prev_rate, sofr_decline_pct, sofr_before_notice), "none")
-    if not arrears_paid:
+    if proposed < prev_rate and not arrears_paid:
         return Clamped(prev_rate, prev_rate, "arrears")
     floor = contract_floor(prev_rate, sofr_decline_pct, sofr_before_notice)
     if proposed >= floor:

@@ -71,19 +71,20 @@ class Path:
         r = self.required_rate
         return {
             "scenario": self.scenario.name, "policy": self.scenario.policy,
+            "horizon_months": self.scenario.months,
             "btc_shock_pct": round(self.scenario.btc_shock * 100, 1),
             "spread_shock_pp": self.scenario.spread_shock_pp,
             "required_rate_pct": None if math.isinf(r) else round(r, 3),
             "start_price": round(self.price[0], 2),
             "months_to_par_band": self.months_to_par,
-            "rate_after_24m_pct": round(self.rate[-1], 3),
-            "saturated_24m": self.saturated,
+            f"rate_after_{self.scenario.months}m_pct": round(self.rate[-1], 3),
+            f"saturated_{self.scenario.months}m": self.saturated,
             "annual_cost_at_required_usd_m": None if math.isinf(r) else round(notional * r / 100 / 1e6, 1),
-            "annual_cost_at_24m_rate_usd_m": round(notional * self.rate[-1] / 100 / 1e6, 1),
+            f"annual_cost_at_{self.scenario.months}m_rate_usd_m": round(notional * self.rate[-1] / 100 / 1e6, 1),
             "months_reduction_cap_bound": sum(b == "reduction_cap" for b in self.bound),
             "months_sofr_floor_bound": sum(b == "sofr_floor" for b in self.bound),
-            "months_paying_above_required": sum(c > y + 1e-9 for c, y in zip(self.rate, self.y)),
-            "excess_dividends_usd_m": round(sum(max(0.0, c - y) for c, y in zip(self.rate, self.y)
+            "months_paying_above_required": sum(c > y + 1e-9 for c, y in zip(self.rate[:-1], self.y[:-1])),
+            "excess_dividends_usd_m": round(sum(max(0.0, c - y) for c, y in zip(self.rate[:-1], self.y[:-1])
                                                 if math.isfinite(y)) / 100 * notional / 12 / 1e6, 1),
         }
 
@@ -125,7 +126,7 @@ def run(sc: Scenario, model: SpreadModel, btc0: float, sofr0: float, rate0: floa
         if t == sc.months:
             break
         # SOFR decline over the look-back month (first value minus the minimum); flat paths give zero.
-        decline = max(0.0, sofr_path[max(0, t - 1)] - sofr_t)
+        decline = max(0.0, sofr_path[min(max(0, t - 1), len(sofr_path) - 1)] - sofr_t)
         proposed = c + policy(price, c, y, decline) / 100
         cl = rules.clamp(proposed, c, decline, sofr_t)
         p.bound.append(cl.bound)

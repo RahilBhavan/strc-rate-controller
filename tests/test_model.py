@@ -103,3 +103,40 @@ class ModelTests(unittest.TestCase):
                          (D('2026-09-01'), D('2026-09-30')))
         with self.assertRaises(ValueError):
             rules.sofr_window('semi_monthly', D('2026-10-01'))
+
+    def test_short_sofr_path_extends_last_value(self):
+        model = credit.SpreadModel('log', 8, 0, 20000)
+        short = sim.run(sim.Scenario('short', sofr_path=[4]), model, 100000, 4, 12)
+        full = sim.run(sim.Scenario('full', sofr_path=[4] * 25), model, 100000, 4, 12)
+        self.assertEqual(short.rate, full.rate)
+        self.assertEqual(short.price, full.price)
+
+    def test_excess_dividends_count_intervals_not_terminal_point(self):
+        model = credit.SpreadModel('log', 7.9, 0, 20000)
+        path = sim.run(sim.Scenario('overpay', policy='hold_12'), model, 100000, 4, 12)
+        # 10 bp on $1.2bn for two years = $2.4m, not 25 monthly charges.
+        self.assertEqual(path.row(1200000000)['excess_dividends_usd_m'], 2.4)
+
+    def test_evaluation_errors_and_replay_sensitivity_are_traceable(self):
+        for result in fit.evaluate(decisions()):
+            metrics = result['post_break']
+            self.assertEqual(len(metrics['notice_dates']), 3)
+            errors = [abs(a - p) for a, p in zip(metrics['actual_bp'], metrics['pred_bp'])]
+            self.assertEqual(metrics['absolute_error_bp'], errors)
+            self.assertAlmostEqual(metrics['mae_bp'], sum(errors) / 3)
+            self.assertEqual([r['n'] for r in result['replay_start_sensitivity']], [8, 6, 4])
+            if result['rule'] == 'proportional+mNAV':
+                self.assertIn('hindsight', result['feature_status'])
+
+    def test_elected_increase_respects_sofr_floor_but_carry_does_not(self):
+        self.assertEqual(rules.clamp(4, 3, 0, 5).rate, 5)
+        self.assertEqual(rules.clamp(3, 3, 0, 5).rate, 3)
+        self.assertEqual(rules.clamp(4, 3, 0, 5, False).rate, 5)
+
+    def test_custom_horizon_labels_match_elapsed_months(self):
+        path = sim.run(sim.Scenario('one', months=1), credit.SpreadModel('log', 8, 0, 20000),
+                       100000, 4, 12)
+        row = path.row(1200000000)
+        self.assertEqual(row['horizon_months'], 1)
+        self.assertIn('rate_after_1m_pct', row)
+        self.assertNotIn('rate_after_24m_pct', row)

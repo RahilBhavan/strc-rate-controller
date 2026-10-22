@@ -108,6 +108,9 @@ def _metrics(rows, preds):
     errs = [snap(p) - r.change_bp for p, r in zip(preds, rows)]
     return {
         "n": len(rows),
+        "notice_dates": [r.notice.isoformat() for r in rows],
+        "actual_bp": [r.change_bp for r in rows],
+        "absolute_error_bp": [abs(e) for e in errs],
         "mae_bp": sum(abs(e) for e in errs) / len(rows),
         "exact": sum(e == 0 for e in errs),
         "pred_bp": [round(snap(p), 1) for p in preds],
@@ -137,7 +140,15 @@ def evaluate(all_rows: list[Decision]) -> list[dict]:
             "in_sample": {k: ins[k] for k in ("n", "mae_bp", "exact", "pred_bp")},
             "expanding_replay": _metrics(all_rows[6:], [rule.predict(rule.fit(all_rows[:i]), r, all_rows[:i])
                 for i, r in enumerate(all_rows) if i >= 6]),
+            "replay_start_sensitivity": [
+                {"initial_training_n": start, **_metrics(all_rows[start:], [
+                    rule.predict(rule.fit(all_rows[:i]), r, all_rows[:i])
+                    for i, r in enumerate(all_rows) if i >= start])}
+                for start in (6, 8, 10) if start < len(all_rows)],
+            "feature_status": ("hindsight-scaled mNAV; retrospective diagnostic only"
+                               if rule.name == "proportional+mNAV" else
+                               "daily notice-close proxies; intraday availability unverified"),
             "loo": {k: v for k, v in loo(rule, pre).items() if k != "raw_pred_bp"},
-            "post_break": {k: v for k, v in _metrics(post, oos_preds).items() if k != "raw_pred_bp"},
+            "post_break": _metrics(post, oos_preds),
         })
     return out

@@ -69,6 +69,6 @@ The snapshot contains 385 attributed response bodies, including SEC filings, Str
 
 ## License
 
-No license file yet. Third-party source documents/data retain their owners' rights.
+[MIT](LICENSE). The license covers this project's code only. Third-party source documents/data retain their owners' rights.
 
 Part of [Rahil Bhavan's projects](https://github.com/RahilBhavan).

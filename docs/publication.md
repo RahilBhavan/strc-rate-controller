@@ -15,3 +15,7 @@ Local evidence: 26 passing tests; 385 source hashes verified; 17 parsed announce
 The reachable-history/source inspection is recorded in [publication-safety.json](publication-safety.json). No credential-pattern hits, oversized blobs or unexpected archive members were found. Manual inspection covered source metadata, tracked paths, history, contacts and binary archive contents. Full third-party redistribution rights are not certified; [sources.md](sources.md) records that limit. No code license was invented.
 
 The result figure was rendered at 720px and 400px in T3. It uses a numeric table because the eight errors are lookup values, not a shape claim. Browser fallback fonts were used; no font redistribution is involved. Figure integrity: no area/length encoding, no implied confidence interval, explicit tiny-sample and leakage warnings. Agent visual review found no clipping or collisions; no independent human reader test was performed.
+
+## Update 2026-10-22: license
+
+The MIT license was added in `LICENSE`. It covers this project's code only. Earlier statements in this record that no license file existed describe the state at publication.

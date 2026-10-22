@@ -1,0 +1,6 @@
+path,url,fetched_utc,sha256,bytes
+data/raw/prices/yahoo-STRC.json,https://query1.finance.yahoo.com/v8/finance/chart/STRC?period1=1751328000&period2=1792627200&interval=1d&events=div,2026-10-22T01:02:19+00:00,61d27c36aa99cab9ae8c64f188cee01a12b98cc2a83cca4e76542970564ff69e,33340
+data/raw/rates/nyfed-sofr.json,https://markets.newyorkfed.org/api/rates/secured/sofr/search.json?startDate=2025-06-01&endDate=2026-10-21,2026-10-22T01:02:22+00:00,b731952f6de927143ce9417c8e0fd7b1448e999b7df1feaf65865b2da0221e1c,82366
+data/raw/strategy/bitcoinKpis-2026-10-21.json,https://api.strategy.com/btc/bitcoinKpis,2026-10-22T01:02:24+00:00,cc995dd97fdfdb3fd7342e337a452547cdcfc826f4d31421764bddd6c9e67c2f,2201
+data/raw/strategy/mstrKpiData-2026-10-21.json,https://api.strategy.com/btc/mstrKpiData,2026-10-22T01:02:23+00:00,24879dbaed0918049f5979f868d8836c6836e0f5be4925fe06aba0a98eb6f3dc,1007
+data/raw/strategy/strcKpiData-2026-10-21.json,https://api.strategy.com/btc/strcKpiData,2026-10-22T01:02:23+00:00,794d4c25eb39fb55a57e3d714a226fa075b4fa5974690fe22f4f97ab296f7eb7,6658

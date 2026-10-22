@@ -2,7 +2,11 @@
 
 Run: python3 scripts/run_all.py
 Writes data/derived/*.csv and results/*.json. Reads only data/raw/ (no network).
+
+One custom stress, printed only (no files written):
+    python3 scripts/run_all.py --btc-shock -40 --spread-shock 100
 """
+import argparse
 import csv
 import datetime as dt
 import json
@@ -47,7 +51,84 @@ def framework_consistent(d) -> bool:
     return d.change_bp <= -25
 
 
+SLOPE_MULTIPLIERS = (0.5, 1.0, 1.5)
+BTC_SHOCK_RANGE_PCT = (-95.0, 400.0)
+SPREAD_SHOCK_RANGE_BP = (-500.0, 2000.0)
+
+
+def shock_rows(models, btc0, sofr0, y0, rate0, notional, btc_shock, spread_pp=0.0, name="custom"):
+    """Framework-policy stress for each spread form and assumed slope multiplier, reanchored to today's yield."""
+    out = []
+    for form, m in models.items():
+        for slope_multiplier in SLOPE_MULTIPLIERS:
+            am = sim.anchor(credit.SpreadModel(form, m.a, m.b * slope_multiplier, m.b_star), btc0, sofr0, y0)
+            path = sim.run(sim.Scenario(name, btc_shock=btc_shock, spread_shock_pp=spread_pp), am, btc0, sofr0, rate0)
+            out.append({"form": form, "assumed_slope_multiplier": slope_multiplier, **path.row(notional)})
+    return out
+
+
+def stress_setup(obs, cp):
+    """Full-sample month-end spread models plus today's anchors (rate, price, BTC, SOFR, notional)."""
+    mo = credit.monthly(obs)
+    models = {form: credit.fit_spread(mo, form, cp["b_star"]) for form in ("log", "distance")}
+    snap = strategy_snapshot("strcKpiData")
+    rate0 = snap["currentDividend"]
+    return {"models": models, "btc0": cp["btc_price"], "sofr0": sofr()[max(sofr())],
+            "y0": rate0 * 100 / snap["ufPrice"], "rate0": rate0, "notional": float(snap["notional"])}
+
+
+def bounded(name, lo, hi):
+    def parse(text):
+        try:
+            value = float(text)
+        except ValueError:
+            raise argparse.ArgumentTypeError(f"{name} must be a number, got {text!r}") from None
+        if not (math.isfinite(value) and lo <= value <= hi):
+            raise argparse.ArgumentTypeError(f"{name} must be between {lo:g} and {hi:g}, got {text}")
+        return value
+    return parse
+
+
+def fmt(value, spec, missing="n/a"):
+    return missing if value is None else format(value, spec)
+
+
+def print_custom(btc_pct, spread_bp):
+    st = stress_setup(credit.observations(), credit.coverage_point())
+    rows = shock_rows(st["models"], st["btc0"], st["sofr0"], st["y0"], st["rate0"], st["notional"],
+                      btc_pct / 100, spread_bp / 100)
+    print(f"Assumed stress: BTC {btc_pct:+g}% (${st['btc0']:,.0f} to ${st['btc0'] * (1 + btc_pct / 100):,.0f}), "
+          f"spread {spread_bp:+g} bp, stated-tier policy, 24 months.")
+    print(f"Start: rate {st['rate0']:.2f}%, SOFR {st['sofr0']:.2f}%, market data through {AS_OF}.")
+    print(f"{'spread form':<11} {'slope x':>7} {'required rate':>13} {'price':>7} {'months to $99':>13} "
+          f"{'annual cost':>12}")
+    for r in rows:
+        rate = r["required_rate_pct"]
+        print(f"{r['form']:<11} {r['assumed_slope_multiplier']:>7g} "
+              f"{'unbounded' if rate is None else f'{rate:.3f}%':>13} "
+              f"{r['start_price']:>7.2f} {fmt(r['months_to_par_band'], 'd', '>24'):>13} "
+              f"{fmt(r['annual_cost_at_required_usd_m'], ',.0f'):>8} $m")
+    if any(r["required_rate_pct"] is None for r in rows):
+        b_star = next(iter(st["models"].values())).b_star
+        print(f"unbounded: BTC at or below the ${b_star:,.0f} coverage price, where the distance form has no "
+              "finite yield.")
+    print("Assumptions, not forecasts: fitted spread slopes, fixed notional, $101 price ceiling, "
+          "discretionary resets.")
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--btc-shock", metavar="PCT", type=bounded("--btc-shock", *BTC_SHOCK_RANGE_PCT),
+                        help="BTC move in percent, applied at t=0 and held (e.g. -40)")
+    parser.add_argument("--spread-shock", metavar="BP", type=bounded("--spread-shock", *SPREAD_SHOCK_RANGE_BP),
+                        help="extra required-yield spread in basis points, held (e.g. 200)")
+    args = parser.parse_args()
+    if args.btc_shock is not None or args.spread_shock is not None:
+        try:
+            print_custom(args.btc_shock or 0.0, args.spread_shock or 0.0)
+        except ValueError as exc:
+            parser.exit(2, f"run_all.py: error: {exc} (the shock makes the assumed required yield invalid)\n")
+        return
     anns = load()
     write_csv(DER / "announcements.csv", [{
         "notice_date": a.notice, "rate_start": a.start, "rate_end": a.end, "rate_pct": a.rate,
@@ -107,7 +188,9 @@ def main():
     out = {"inputs": {
         "notional_usd": notional, "notional_source": STRATEGY_API, "rate0_pct": rate0, "strc_price0": snap["ufPrice"],
         "implied_yield0_pct": y0, "strategy_eff_yield_pct": snap["effYield"], "btc0": btc0, "sofr0_pct": sofr0,
-        "sofr_date": max(sofr()), "b_star": cp["b_star"], "as_of": "2026-10-21",
+        "sofr_date": max(sofr()), "b_star": cp["b_star"], "coverage_btc_price_usd": cp["b_star"],
+        "coverage_btc_price_note": "b_star: BTC price at which BTC holdings equal debt plus preferred notional",
+        "as_of": "2026-10-21",
         "strategy_duration": snap.get("duration"), "model_duration_1_over_y": 100 / y0},
         "scenarios": {}, "required_rate_grid": {}, "breakevens": {}}
     scenarios = [
@@ -145,14 +228,12 @@ def main():
         out.setdefault("anchored_models", {})[form] = {"a": am.a, "b": am.b, "b_star": am.b_star}
         out.setdefault("paths", {})[form] = paths
     out["status"] = "Assumed stress responses; no causal identification or default probability"
-    out["btc_minus40_sensitivity"] = []
-    for form, m in models.items():
-        for slope_multiplier in (0.5, 1.0, 1.5):
-            scaled = credit.SpreadModel(form, m.a, m.b * slope_multiplier, m.b_star)
-            am = sim.anchor(scaled, btc0, sofr0, y0)
-            path = sim.run(sim.Scenario("btc_-40_sensitivity", btc_shock=-0.4), am, btc0, sofr0, rate0)
-            out["btc_minus40_sensitivity"].append({"form": form, "assumed_slope_multiplier": slope_multiplier,
-                                                        **path.row(notional)})
+    out["btc_minus40_sensitivity"] = shock_rows(models, btc0, sofr0, y0, rate0, notional, -0.4,
+                                                name="btc_-40_sensitivity")
+    # README stress table: every BTC shock across forms and assumed slope multipliers (scripts/readme_table.py).
+    out["btc_shock_sensitivity"] = [row for shock in (-0.2, -0.4, -0.6)
+                                    for row in shock_rows(models, btc0, sofr0, y0, rate0, notional, shock,
+                                                          name=f"btc_{round(shock * 100):+d}_sensitivity")]
     dump("scenarios.json", out)
     print(f"announcements {len(anns)}, decisions {len(rows)}, daily obs {len(obs)}, as of {AS_OF}")
 

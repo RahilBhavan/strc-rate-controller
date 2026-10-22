@@ -45,6 +45,7 @@ if __name__ == '__main__':
     if args.check:
         if path.read_text() != svg:
             raise SystemExit('Result figure is stale; run python scripts/result_figure.py')
+        print('Result figure matches results/fit.json: assets/holdout.svg')
     else:
         path.parent.mkdir(exist_ok=True)
         path.write_text(svg)

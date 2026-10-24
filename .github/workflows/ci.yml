@@ -17,6 +17,7 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python scripts/snapshot.py
       - run: python scripts/validate.py
+      - run: python scripts/reset_figure.py --check
       - run: python scripts/result_figure.py --check
       - run: python scripts/readme_table.py --check
       - run: python -m compileall -q strc scripts tests

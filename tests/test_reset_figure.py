@@ -17,7 +17,7 @@ spec.loader.exec_module(reset_figure)
 
 
 def readme_rows():
-    block = (ROOT / 'README.md').read_text().split(reset_figure.START, 1)[1].split(reset_figure.END, 1)[0]
+    block = (ROOT / 'docs' / 'reset-history.md').read_text().split(reset_figure.START, 1)[1].split(reset_figure.END, 1)[0]
     return [line.split(' | ') for line in block.splitlines() if re.match(r'\| \d{4}-\d{2}-\d{2} ', line)]
 
 

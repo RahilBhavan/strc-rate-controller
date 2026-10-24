@@ -1,5 +1,7 @@
 # Chronological policy evaluation improvement
 
+Historical plan, dated 2026-10-22. Test counts below describe that date; the current suite has 45 tests (2026-10-24).
+
 Scope authorized 2026-10-22: add an auditable, retrospective comparison to simple
 policies using only the existing fourteen dated unconditional decisions. Initial
 checkout was clean at d8ab6a1; baseline: 26 tests pass. Read AGENTS.md, CLAUDE.md,

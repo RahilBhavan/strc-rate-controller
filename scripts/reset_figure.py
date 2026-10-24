@@ -1,9 +1,9 @@
-"""Draw STRC's filed rate resets against its daily price and write the README reset table.
+"""Draw STRC's filed rate resets against its daily price and write the reset-history table.
 
 Reads only the frozen snapshot (run scripts/snapshot.py first). Every rate is re-extracted from its cached filing
 by strc.history.load(), and the $99 to $100 band is checked against the cached 8-K text on every run.
 
-    python3 scripts/reset_figure.py          (rewrite assets/resets.svg and the README reset table)
+    python3 scripts/reset_figure.py          (rewrite assets/resets.svg and the table in docs/reset-history.md)
     python3 scripts/reset_figure.py --check  (fail if either is stale)
 """
 import argparse
@@ -22,7 +22,7 @@ from strc.history import load  # noqa: E402
 from strc.text import doc_text, edgar_url  # noqa: E402
 
 FIGURE = ROOT / "assets/resets.svg"
-README = ROOT / "README.md"
+TABLE_DOC = ROOT / "docs" / "reset-history.md"
 START, END = "<!-- reset-table:start -->", "<!-- reset-table:end -->"
 OBJECTIVE_DOC = "000105044626000036-mstr-20260730x8kxex991.htm"
 OBJECTIVE = "Our objective is for STRC to trade over time at $99 to $100."
@@ -170,7 +170,7 @@ def svg(rows, prices, objective):
     pending = next(r for r in rows if r["kind"] == "pending")
     last_filing = shown[-1]["notice"]
     out += [text(24, 704, f"Rates: {len({r['url'] for r in shown})} SEC filings, {fmt_day(shown[0]['notice'])} to "
-                 f"{fmt_day(last_filing)}, each linked in the README table.", 18, GRAY),
+                 f"{fmt_day(last_filing)}, each linked in docs/reset-history.md.", 18, GRAY),
             text(24, 728, f"Objective: 8-K exhibit 99.1, Jul 30, 2026 ({accession(objective)}).", 18, GRAY),
             text(24, 752, f"Price: Yahoo daily close (secondary data) to {fmt_day(prices[-1][0])}.", 18, GRAY),
             text(24, 776, f"Not shown: the {pending['start']:%b %Y} rate, pending the Oct 28, 2026 vote.", 18, GRAY),
@@ -222,28 +222,28 @@ def with_table(text, block):
     head, sep, rest = text.partition(START)
     _, sep2, tail = rest.partition(END)
     if not (sep and sep2):
-        raise SystemExit(f"README.md is missing the {START} ... {END} markers")
+        raise SystemExit(f"docs/reset-history.md is missing the {START} ... {END} markers")
     return head + block + tail
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--check", action="store_true", help="fail if the figure or README table is stale")
+    parser.add_argument("--check", action="store_true", help="fail if the figure or reset table is stale")
     args = parser.parse_args()
     rows, objective = resets(), objective_url()
     figure = svg(rows, closes(), objective)
-    readme = README.read_text()
+    readme = TABLE_DOC.read_text()
     new_readme = with_table(readme, table(rows, objective))
     if args.check:
         stale = [p.name for p, new, old in ((FIGURE, figure, FIGURE.read_text() if FIGURE.exists() else ""),
-                                            (README, new_readme, readme)) if new != old]
+                                            (TABLE_DOC, new_readme, readme)) if new != old]
         if stale:
             raise SystemExit(f"Stale: {', '.join(stale)}; run python3 scripts/reset_figure.py")
-        print("Reset figure and README reset table match the cached filings: assets/resets.svg")
+        print("Reset figure and docs/reset-history.md table match the cached filings: assets/resets.svg")
         return
     FIGURE.write_text(figure)
-    README.write_text(new_readme)
-    print("Wrote assets/resets.svg and the README reset table")
+    TABLE_DOC.write_text(new_readme)
+    print("Wrote assets/resets.svg and the docs/reset-history.md table")
 
 
 if __name__ == "__main__":

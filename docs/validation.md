@@ -10,7 +10,7 @@ python3 scripts/readme_table.py --check
 python3 -m compileall -q strc scripts tests
 ```
 
-Observed: 42 tests passed; 385 source bodies matched the committed inventory; 7 CSV/JSON output hashes matched across two identical demos. Exact hashes and interpreter are in [validation.json](validation.json). Floating-point output identity is measured within an environment, not guaranteed across Python/platform versions.
+Observed (re-run 2026-10-24 at 0e301ec on Python 3.14.7 and 3.12.14): 45 tests passed; 385 source bodies matched the committed inventory; 7 CSV/JSON output hashes matched across two identical demos. Exact hashes and interpreter are in [validation.json](validation.json). Floating-point output identity is measured within an environment, not guaranteed across Python/platform versions.
 
 The CI workflow pins checkout/setup-python by full commit SHA and Python 3.12.12/3.14.7 on Ubuntu 24.04, with read-only repository permissions. After runtime setup, checks are offline: snapshot restoration, source verification, real behavior tests, repeated demo hashes, result-figure and README stress-table freshness and byte compilation. Python is dynamically typed; compilation is not claimed as static typechecking.
 

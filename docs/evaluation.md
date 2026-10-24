@@ -22,7 +22,7 @@ The first command restores the hash-verified cache; none needs credentials or a
 network. `results/evaluation.json` contains the full report and is intentionally
 ignored by Git. The print command recomputes from frozen inputs rather than
 trusting a possibly stale JSON. Invalid split/policy arguments exit 2 via argparse.
-Local verification: 34 tests passed in 2.62 seconds; seven output hashes matched
+Local verification (re-run 2026-10-24): 45 tests passed; seven output hashes matched
 across two full demo runs. Exact hashes are in validation.md/json.
 
 ## Protocol and output

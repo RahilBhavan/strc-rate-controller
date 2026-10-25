@@ -4,6 +4,10 @@ Strategy changes the dividend rate on its STRC shares each month to keep their p
 
 [![Offline research checks](https://github.com/RahilBhavan/strc-rate-controller/actions/workflows/ci.yml/badge.svg)](https://github.com/RahilBhavan/strc-rate-controller/actions/workflows/ci.yml)
 
+![Strategy raised STRC's rate in 8 of 14 decisions, from 9.00% to 12.00%. Three holds came with the price in the $99 to $100 band; three came after the June 2026 drop to $74.57, while the price was still below $99.](assets/resets.svg)
+
+All 14 decisions, with measured price, stated tier and SEC filing, are in [docs/reset-history.md](docs/reset-history.md).
+
 STRC is Strategy's Variable Rate Series A Perpetual Stretch Preferred Stock. It has no maturity, and management resets its dividend rate each month at its discretion. Strategy's stated objective is for STRC to trade at $99 to $100 ([8-K exhibit 99.1, July 30, 2026](https://www.sec.gov/Archives/edgar/data/1050446/000105044626000036/mstr-20260730x8kxex991.htm)). Its published guidance ties each reset to STRC's volume-weighted average price (VWAP) for the month:
 
 - Below $95: raise the rate by 50 bp or more.
@@ -12,37 +16,6 @@ STRC is Strategy's Variable Rate Series A Perpetual Stretch Preferred Stock. It 
 - $101 and above: cut it by 25 bp, or more if one-month term SOFR fell.
 
 The guidance is a stated intention, not a contract term ([8-K of February 5, 2026](https://www.sec.gov/Archives/edgar/data/1050446/000105044626000012/mstr-20260205.htm); before then the window was the five trading days before month-end). The certificate of designations does not cap increases. It limits each cut to 25 bp plus any decline in one-month SOFR and keeps the rate at or above that SOFR. The chart puts every filed rate next to the price the guidance watches.
-
-![Strategy raised STRC's rate in 8 of 14 decisions, from 9.00% to 12.00%. Three holds came with the price in the $99 to $100 band; three came after the June 2026 drop to $74.57, while the price was still below $99.](assets/resets.svg)
-
-<!-- reset-table:start -->
-<details>
-<summary>Every reset in the chart, with its filing</summary>
-
-| Notice | Rate period | Rate | Change | Measured price | Stated tier | SEC filing |
-|---|---|--:|---|--:|---|---|
-| 2025-07-29 | 2025-07-29 to 2025-08-31 | 9.00% | at issue | n/a | n/a | [0001193125-25-167987](https://www.sec.gov/Archives/edgar/data/1050446/000119312525167987/d43815dex31.htm) |
-| 2025-08-31 | 2025-09-01 to 2025-09-30 | 10.00% | +100 bp | $95.78 (5-day) | +25 bp | [0001193125-25-193487](https://www.sec.gov/Archives/edgar/data/1050446/000119312525193487/d80677d8k.htm) |
-| 2025-09-30 | 2025-10-01 to 2025-10-31 | 10.25% | +25 bp | $97.20 (5-day) | +25 bp | [0001193125-25-225038](https://www.sec.gov/Archives/edgar/data/1050446/000119312525225038/d939712d8k.htm) |
-| 2025-10-30 | 2025-11-01 to 2025-11-30 | 10.50% | +25 bp | $98.65 (5-day) | +25 bp | [0001193125-25-258690](https://www.sec.gov/Archives/edgar/data/1050446/000119312525258690/mstr-20251030.htm) |
-| 2025-11-30 | 2025-12-01 to 2025-12-31 | 10.75% | +25 bp | $94.69 (5-day) | +50 bp | [0001193125-25-303157](https://www.sec.gov/Archives/edgar/data/1050446/000119312525303157/d69948d8k.htm) |
-| 2025-12-31 | 2026-01-01 to 2026-01-31 | 11.00% | +25 bp | $98.92 (5-day) | +25 bp | [0001193125-26-000264](https://www.sec.gov/Archives/edgar/data/1050446/000119312526000264/mstr-20251117.htm) |
-| 2026-01-31 | 2026-02-01 to 2026-02-28 | 11.25% | +25 bp | $99.01 (5-day) | no change | [0001193125-26-032731](https://www.sec.gov/Archives/edgar/data/1050446/000119312526032731/mstr-20260131.htm) |
-| 2026-02-28 | 2026-03-01 to 2026-03-31 | 11.50% | +25 bp | $98.56 (month) | +25 bp | [0001193125-26-084264](https://www.sec.gov/Archives/edgar/data/1050446/000119312526084264/mstr-20260228.htm) |
-| 2026-03-31 | 2026-04-01 to 2026-04-30 | 11.50% | held | $99.94 (month) | no change | [0001193125-26-135765](https://www.sec.gov/Archives/edgar/data/1050446/000119312526135765/mstr-20250902.htm) |
-| 2026-04-30 | 2026-05-01 to 2026-05-31 | 11.50% | held | $99.77 (month) | no change | [0001193125-26-199155](https://www.sec.gov/Archives/edgar/data/1050446/000119312526199155/mstr-20250902.htm) |
-| 2026-05-31 | 2026-06-01 to 2026-06-30 | 11.50% | held | $99.59 (month) | no change | [0001193125-26-249768](https://www.sec.gov/Archives/edgar/data/1050446/000119312526249768/mstr-20260530.htm) |
-| 2026-06-15 | 2026-07-01 to 2026-07-15 | 11.50% | carried, not a decision | n/a | n/a | [0001193125-26-270366](https://www.sec.gov/Archives/edgar/data/1050446/000119312526270366/d144149d8k.htm) |
-| 2026-06-29 | 2026-07-16 to 2026-08-15 | 12.00% | +50 bp | $88.71 (month) | +50 bp | [0001193125-26-286871](https://www.sec.gov/Archives/edgar/data/1050446/000119312526286871/mstr-20260629.htm) |
-| 2026-07-31 | 2026-08-16 to 2026-09-15 | 12.00% | held | $87.53 (month) | +50 bp | [0001193125-26-329565](https://www.sec.gov/Archives/edgar/data/1050446/000119312526329565/mstr-20260803.htm) |
-| 2026-08-31 | 2026-09-16 to 2026-10-15 | 12.00% | held | $95.45 (month) | +25 bp | [0001193125-26-377583](https://www.sec.gov/Archives/edgar/data/1050446/000119312526377583/mstr-20260831.htm) |
-| 2026-09-30 | 2026-10-16 to 2026-11-15 | 12.00% | held | $98.31 (month) | +25 bp | [0001193125-26-409863](https://www.sec.gov/Archives/edgar/data/1050446/000119312526409863/mstr-20260930.htm) |
-| 2026-10-15 | 2026-11-01 to 2026-11-30 | 12.00% | pending vote, excluded | n/a | n/a | [0001193125-26-423400](https://www.sec.gov/Archives/edgar/data/1050446/000119312526423400/mstr-20261015.htm) |
-
-Measured price is a daily typical-price VWAP proxy over the window the stated tiers name. Stated tier is the minimum change those tiers recommend. The $99 to $100 objective is from [8-K exhibit 99.1, 0001050446-26-000036](https://www.sec.gov/Archives/edgar/data/1050446/000105044626000036/mstr-20260730x8kxex991.htm). Generated by `scripts/reset_figure.py`.
-
-</details>
-<!-- reset-table:end -->
 
 ## Results
 
@@ -73,14 +46,7 @@ Source: `results/scenarios.json` (`btc_shock_sensitivity`), stated-tier policy, 
 
 `strc/history.py` re-extracts each rate from its cached filing; `rules.py` separates contract limits from the stated tiers; `features.py` builds price and rate proxies; `fit.py` and `evaluation.py` score policies; `credit.py` and `sim.py` generate assumed spread and rate paths. All inputs come from a frozen, hash-verified local cache.
 
-Terms used in the outputs:
-
-- **Stated-tier proxy** (`framework` policy): the tiers above read as a rule. The real decision stays discretionary.
-- **mNAV**: Strategy's company-defined enterprise value divided by the value of its BTC holdings. The model uses a proxy: Strategy's own mNAV on 2026-10-21, scaled back in time by the MSTR/BTC price ratio.
-- **Coverage price** (`b_star`, also written as `coverage_btc_price_usd`): the BTC price at which Strategy's BTC holdings equal its debt plus preferred notional. Below it, the `distance` form has no finite required rate.
-- **Spread form**: how the fitted credit spread depends on BTC. `log` uses log(BTC / coverage price); `distance` grows without limit as BTC approaches the coverage price.
-- **Assumed slope multiplier**: the fitted spread slope multiplied by 0.5, 1 or 1.5 to show how much the answer depends on that one estimate.
-- **$101 simulated ceiling**: the model caps STRC's price at $101, the optional redemption price. Real prices can trade above it.
+Terms such as stated-tier proxy, mNAV proxy, coverage price, spread form and the $101 ceiling are defined in [docs/methodology.md](docs/methodology.md#terms).
 
 ## Run it
 
@@ -132,6 +98,7 @@ Assumptions, not forecasts: fitted spread slopes, fixed notional, $101 price cei
 
 - [Public design system](DESIGN.md): Rahil Design 3.3.0, shared tokens and visual review rules.
 - [Scope and acceptance](docs/spec.md): local v1 contract.
+- [Reset history](docs/reset-history.md): all 14 decisions with price, stated tier and SEC filing.
 - [Chronological evaluation](docs/evaluation.md): dated ledgers, simple baselines, losing cases and a five-minute example.
 - [Methodology](docs/methodology.md): fitting, lookahead limitations and stress assumptions.
 - [Sources](docs/sources.md): source coverage and verification.

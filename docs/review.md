@@ -1,5 +1,7 @@
 # Correctness review and remaining limits
 
+Historical review. The 18 and 26 test counts below describe the commits named here; the current suite has 45 tests (2026-10-24).
+
 Scope: existing Python CLI v1 at `5d32e24`, including frozen sources and optional fetch helpers. Applied code-reviewer's prove-then-fix workflow. Baseline: 18 tests passed. Swept correctness, error handling, security, accessibility (CLI/static figure), performance, dead code and project conventions. No measured performance defect, reachable injection or private source artifact was established. No code was removed as dead merely because another repository might consume it.
 
 ## Fixed and proven

@@ -105,6 +105,7 @@ Assumptions, not forecasts: fitted spread slopes, fixed notional, $101 price cei
 - [Validation](docs/validation.md): exact checks and reproducibility evidence.
 - [Correctness review](docs/review.md): proven failures, fixes and remaining limits.
 - [Publication receipt](docs/publication.md): remote verification evidence.
+- [Related project: preferred-accrual-ledger](https://github.com/RahilBhavan/preferred-accrual-ledger): replays the dividend schedules, record-date entitlements and arrears that these rate resets feed into.
 
 ## Sources
 
